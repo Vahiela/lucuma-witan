@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#11140f">
   <meta name="description" content="Lucuma is a modern lighting system for Minecraft Java Edition: real-time shadows, colored block light, retained indirect lighting, and a vanilla-first visual philosophy.">
-  <title>Lucuma — Modern Minecraft Lighting</title>
+  <title>Lucuma | Lighting for Minecraft</title>
   <link rel="stylesheet" href="./styles.css">
   <script defer src="./app.js"></script>
 </head>
@@ -50,10 +50,9 @@
       <div class="shell hero-inner">
         <div class="hero-copy reveal">
           <p class="eyebrow"><span class="status-dot"></span> Minecraft Java · Fabric · Beta</p>
-          <h1>Modern lighting.<br><span>Still Minecraft.</span></h1>
+          <h1><span>Lucuma.</span><br>Lighting for Minecraft.</h1>
           <p class="hero-lede">
-            Lucuma rebuilds Minecraft lighting around real-time shadows, colored block light and retained indirect light —
-            designed to feel like vanilla grew up, not like a different game.
+            Dynamic shadows, colored block light and indirect lighting, built to feel at home in Minecraft.
           </p>
           <div class="hero-actions">
             <a class="button button--accent manager-link" href="#beta" data-manager-download>
@@ -65,7 +64,7 @@
               <span class="button-arrow" aria-hidden="true">↗</span>
             </a>
           </div>
-          <p class="microcopy">One manager. Install, update, repair, roll back or uninstall Lucuma without touching your other mods.</p>
+          <p class="microcopy">Lucuma Manager will handle install, updates, repair, rollback and uninstall.</p>
         </div>
 
         <div class="hero-stage reveal reveal--delay" aria-label="Lucuma visual placeholder">
@@ -88,21 +87,20 @@
       </div>
 
       <div class="shell capability-strip reveal">
-        <div><strong>Dynamic</strong><span>sun & moon shadows</span></div>
-        <div><strong>Colored</strong><span>block lighting</span></div>
-        <div><strong>Retained</strong><span>lighting data</span></div>
-        <div><strong>Vanilla-first</strong><span>visual direction</span></div>
+        <div><strong>Sun & moon</strong><span>dynamic directional shadows</span></div>
+        <div><strong>Block light</strong><span>colored local lighting</span></div>
+        <div><strong>Indirect light</strong><span>retained surface lighting</span></div>
+        <div><strong>Vanilla first</strong><span>Minecraft stays readable</span></div>
       </div>
     </section>
 
     <section class="section section--ink" id="lighting">
       <div class="shell">
         <div class="section-heading reveal">
-          <p class="eyebrow">LIGHT, REBUILT</p>
-          <h2>Shadows are part of the world now.</h2>
+          <p class="eyebrow">LIGHTING</p>
+          <h2>Built around the world.</h2>
           <p>
-            Lucuma does not bolt a conventional shader pack on top of Minecraft. Its lighting pipeline resolves visibility,
-            retains the result, and lets final shading consume stored lighting instead of rediscovering everything every frame.
+            Lucuma uses its own lighting pipeline instead of applying a conventional shader look on top of the game. Its visibility and lighting data are retained so solved work can be reused.
           </p>
         </div>
 
@@ -111,19 +109,19 @@
             <span class="feature-number">01</span>
             <div class="pixel-icon pixel-icon--sun" aria-hidden="true"></div>
             <h3>Sun & moon</h3>
-            <p>Directional shadows move with the sky and react to the world instead of being painted into a static look.</p>
+            <p>Directional shadows move with the sky and respond to the blocks around them.</p>
           </article>
           <article class="feature-card reveal reveal--delay">
             <span class="feature-number">02</span>
             <div class="pixel-icon pixel-icon--lamp" aria-hidden="true"></div>
             <h3>Block light</h3>
-            <p>Emissive blocks cast their own colored light with retained visibility, from warm furnaces to soul-blue flames.</p>
+            <p>Emissive blocks keep their own colors, from warm furnaces and lava to soul-blue flames.</p>
           </article>
           <article class="feature-card reveal reveal--delay-2">
             <span class="feature-number">03</span>
             <div class="pixel-icon pixel-icon--bounce" aria-hidden="true"></div>
             <h3>Indirect light</h3>
-            <p>Light can carry the color of the surfaces it reaches, giving caves, interiors and builds a sense of place without abandoning Minecraft's clarity.</p>
+            <p>Light can carry surface color into nearby spaces without replacing Minecraft's own visual language.</p>
           </article>
         </div>
       </div>
@@ -140,14 +138,13 @@
           </div>
         </div>
         <div class="media-copy reveal reveal--delay">
-          <p class="eyebrow">REAL-TIME DIRECTIONAL LIGHT</p>
-          <h2>Light that moves with the day.</h2>
+          <p class="eyebrow">SUN & MOON</p>
+          <h2>Light changes with the day.</h2>
           <p>
-            Sunrise, noon, dusk and moonlight are lighting states, not preset screenshots. Lucuma is built around lighting
-            that can change while you play.
+            Sunrise, noon, dusk and moonlight can change the shadows while you play. The aim is to make the world's light feel present without making the game feel unfamiliar.
           </p>
           <div class="detail-rule"></div>
-          <p class="detail-copy">No shader-pack ritual. No giant preset menu. The goal is to make better lighting feel native.</p>
+          <p class="detail-copy">The final screenshots will replace these simple placeholders once the beta capture set is ready.</p>
         </div>
       </div>
     </section>
@@ -163,14 +160,13 @@
           </div>
         </div>
         <div class="media-copy reveal reveal--delay">
-          <p class="eyebrow">COLOR THAT BELONGS THERE</p>
-          <h2>Every light gets to be itself.</h2>
+          <p class="eyebrow">COLOR</p>
+          <h2>Different lights stay different.</h2>
           <p>
-            Glow berries, lava, soul fire, portals, furnaces and the rest should not all collapse into the same generic light.
-            Lucuma treats emitter color as part of the lighting system.
+            Glow berries, lava, soul fire, portals, furnaces and other emitters keep distinct colors instead of being reduced to one generic block-light tint.
           </p>
           <div class="detail-rule"></div>
-          <p class="detail-copy">Material and lighting work are being built as one coherent system, not as unrelated visual tricks.</p>
+          <p class="detail-copy">Visibility and color are separate parts of the system, leaving room for the material model to grow later.</p>
         </div>
       </div>
     </section>
@@ -179,38 +175,36 @@
       <div class="performance-grid" aria-hidden="true"></div>
       <div class="shell performance-layout">
         <div class="performance-copy reveal">
-          <p class="eyebrow">BUILT TO ACTUALLY RUN</p>
-          <h2>Performance is part of the renderer.</h2>
+          <p class="eyebrow">PERFORMANCE</p>
+          <h2>Built to be practical.</h2>
           <p>
-            Lucuma is developed and stress-tested on integrated graphics, including long render-distance routes where frame-time
-            stability matters more than a flattering average FPS number.
+            Lucuma is developed on integrated graphics as well as stronger hardware. Long render distance, movement and frame-time stability are part of the test, not just a best-case still scene.
           </p>
           <p>
-            The architecture is built around retained work, demand-driven updates and distance-aware detail so settled lighting
-            does not need to be solved from scratch every frame.
+            The renderer keeps solved lighting around, updates what changes and reduces detail with distance where that makes sense.
           </p>
         </div>
 
         <div class="performance-panel reveal reveal--delay">
           <div class="perf-row">
             <span class="perf-kicker">TARGET</span>
-            <strong>Low-end hardware</strong>
-            <small>Not just flagship GPUs.</small>
+            <strong>Broad hardware</strong>
+            <small>Integrated graphics matter too.</small>
           </div>
           <div class="perf-row">
             <span class="perf-kicker">PRIORITY</span>
             <strong>Stable frame times</strong>
-            <small>Stutters count.</small>
+            <small>Stutters are part of the result.</small>
           </div>
           <div class="perf-row">
             <span class="perf-kicker">METHOD</span>
-            <strong>Retain what is solved</strong>
-            <small>Reuse before recompute.</small>
+            <strong>Reuse solved work</strong>
+            <small>Retain first, recompute when needed.</small>
           </div>
           <div class="perf-row">
             <span class="perf-kicker">QUALITY</span>
             <strong>Full-resolution presentation</strong>
-            <small>Look changes are judged in motion.</small>
+            <small>Visual changes are judged in motion.</small>
           </div>
         </div>
       </div>
@@ -223,16 +217,15 @@
           <span class="quote-pixel quote-pixel--2"></span>
         </div>
         <blockquote class="reveal reveal--delay">
-          <p>“Minecraft already has a visual language. Lucuma is trying to be its heir, not its replacement.”</p>
+          <p>Minecraft already has a visual language. Lucuma should fit inside it.</p>
           <footer>Vanilla, evolved.</footer>
         </blockquote>
         <div class="philosophy-copy reveal">
           <p>
-            The point is not to turn every world into a cinematic shader screenshot. Blocks should still read as blocks.
-            Darkness should still matter. Builds should still look like the builds you made.
+            Blocks should still read as blocks. Darkness should still matter. Builds should still look like the builds you made.
           </p>
           <p>
-            Lucuma adds the lighting Minecraft can naturally grow into — while keeping the game recognizable, readable and easy to live with.
+            Lucuma adds more complete lighting while trying to preserve the clarity and familiarity that make Minecraft look like Minecraft.
           </p>
         </div>
       </div>
@@ -241,11 +234,10 @@
     <section class="section section--beta" id="beta">
       <div class="shell beta-card reveal">
         <div class="beta-copy">
-          <p class="eyebrow">LUCUMA BETA</p>
-          <h2>Install it once.<br>Keep it updated.</h2>
+          <p class="eyebrow">BETA</p>
+          <h2>Lucuma Manager.</h2>
           <p>
-            Lucuma will be distributed through the Lucuma Manager. It finds your Minecraft/Fabric installation, installs the
-            protected build, verifies updates and keeps a previous known-good version available for rollback.
+            Public builds will be installed through Lucuma Manager. It will find your Minecraft and Fabric installation, verify the Lucuma build, update it safely and keep a previous known-good version available for rollback.
           </p>
           <div class="beta-actions">
             <a class="button button--accent button--large manager-link" href="#" data-manager-download>
