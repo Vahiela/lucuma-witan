@@ -832,6 +832,7 @@ body { background: var(--ink); }
   font-weight: 400;
 }
 .media-frame--capture { min-height: 0; align-self: center; }
+.hero-stage--capture { min-height: 0; align-self: center; }
 .media-capture {
   display: block;
   overflow: hidden;
