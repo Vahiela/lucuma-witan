@@ -843,6 +843,16 @@ body { background: var(--ink); }
   font-family: "Monocraft", "Consolas", monospace;
   font-weight: 400;
 }
+.media-frame--capture { min-height: 0; align-self: center; }
+.media-capture {
+  display: block;
+  overflow: hidden;
+  border: 5px solid;
+  border-color: #686965 #edede8 #edede8 #686965;
+  background: #111;
+}
+.media-capture img { display: block; width: 100%; height: auto; }
+.media-capture:focus-visible { outline: 3px solid var(--lucuma); outline-offset: 5px; }
 .reveal { transform: translateY(16px); transition-duration: .45s; }
 
 @media (max-width: 980px) {
