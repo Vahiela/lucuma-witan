@@ -1,6 +1,7 @@
 (() => {
   const root = document.documentElement;
   const managerUrl = (root.dataset.managerUrl || "").trim();
+  const managerVersion = managerUrl.match(/Lucuma-Manager-(\d+\.\d+\.\d+)\.msi$/)?.[1];
   const managerLinks = document.querySelectorAll("[data-manager-download]");
   const managerLabels = document.querySelectorAll("[data-manager-label]");
 
@@ -10,7 +11,8 @@
       link.classList.remove("is-disabled");
       link.removeAttribute("aria-disabled");
       managerLabels.forEach((label) => {
-        label.textContent = "Download Lucuma Manager";
+        const caption = label.dataset.managerLabel === "short" ? "Get Lucuma" : "Download Lucuma Manager";
+        label.textContent = caption + (managerVersion ? " " + managerVersion : "");
       });
       return;
     }
