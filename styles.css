@@ -80,23 +80,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   font-family: var(--display); letter-spacing: .08em;
   font-size: 22px; transform: scaleX(.94);
 }
-.brand-mark {
-  position: relative; width: 29px; height: 29px; display: inline-block;
-  image-rendering: pixelated;
-}
-.brand-mark__fruit {
-  position: absolute; left: 3px; top: 8px; width: 21px; height: 18px;
-  background: var(--lucuma);
-  clip-path: polygon(14% 0, 84% 0, 100% 22%, 100% 78%, 82% 100%, 17% 100%, 0 78%, 0 22%);
-}
-.brand-mark__cut {
-  position: absolute; left: 11px; top: 12px; width: 10px; height: 10px;
-  background: var(--gold); box-shadow: inset 3px 0 0 rgba(255,255,255,.2);
-}
-.brand-mark__leaf {
-  position: absolute; left: 14px; top: 2px; width: 10px; height: 7px;
-  background: #78933d; clip-path: polygon(0 100%, 30% 0, 100% 0, 70% 100%);
-}
+.brand-logo { width: 40px; height: 40px; object-fit: contain; flex-shrink: 0; }
 
 .primary-nav {
   justify-self: center; display: flex; align-items: center; gap: 30px;
@@ -422,7 +406,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   border-bottom: 1px solid #343a30; background: #1a1e17;
   color: #cbd1c0; font-size: 10px; font-weight: 900; letter-spacing: .13em;
 }
-.manager-mini-mark { width: 14px; height: 14px; background: var(--lucuma); box-shadow: 4px -4px 0 -2px #6e8739; }
+.manager-mini-logo { width: 24px; height: 24px; object-fit: contain; flex-shrink: 0; }
 .window-dots { margin-left: auto; display: flex; gap: 7px; }
 .window-dots i { width: 7px; height: 7px; background: #4b5246; }
 .manager-body { padding: 34px; }
@@ -797,10 +781,6 @@ body { background: var(--ink); }
   border-bottom: 4px solid #666763;
   box-shadow: inset 0 2px 0 #ddddd7;
   color: #444;
-}
-.manager-mini-mark {
-  background: var(--lucuma);
-  box-shadow: inset 3px 3px 0 #f6df80, inset -3px -3px 0 #917221;
 }
 .window-dots i {
   width: 10px;
