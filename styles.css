@@ -1,3 +1,33 @@
+@font-face {
+  font-family: "Barlow Semi Condensed";
+  src: url("./assets/fonts/barlow/BarlowSemiCondensed-Bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Barlow";
+  src: url("./assets/fonts/barlow/Barlow-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Barlow";
+  src: url("./assets/fonts/barlow/Barlow-Bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Monocraft";
+  src: url("./assets/fonts/monocraft/Monocraft-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
   --ink: #11140f;
   --ink-2: #171b14;
@@ -81,6 +111,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   font-size: 22px; transform: scaleX(.94);
 }
 .brand-logo { width: 40px; height: 40px; object-fit: contain; flex-shrink: 0; }
+.support-copy a { color: var(--lucuma); text-underline-offset: 4px; }
+.support-copy a:hover, .support-copy a:focus-visible { color: var(--lucuma-bright); }
 
 .primary-nav {
   justify-self: center; display: flex; align-items: center; gap: 30px;
@@ -176,7 +208,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 .hero h1, .section-heading h2, .media-copy h2, .performance-copy h2,
 .philosophy-layout blockquote p, .beta-copy h2 {
-  margin: 0; font-family: var(--display); line-height: .96; text-transform: uppercase;
+  margin: 0; font-family: var(--display); line-height: .96; text-transform: none;
   letter-spacing: .012em; font-weight: 900;
 }
 .hero h1 { font-size: clamp(64px, 8vw, 126px); max-width: 840px; }
@@ -246,7 +278,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
 }
 .capability-strip div { padding: 19px 22px; border-right: 1px solid var(--line); }
-.capability-strip div:first-child { padding-left: 0; }
 .capability-strip div:last-child { border-right: 0; }
 .capability-strip strong, .capability-strip span { display: block; }
 .capability-strip strong {
@@ -276,7 +307,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 .feature-number { position: absolute; right: 22px; top: 20px; color: #424a3b; font-weight: 900; font-size: 12px; }
 .feature-card h3 {
-  margin: 42px 0 12px; font-family: var(--display); text-transform: uppercase; font-size: 30px; letter-spacing: .05em;
+  margin: 42px 0 12px; font-family: var(--display); text-transform: none; font-size: 30px; letter-spacing: .05em;
 }
 .feature-card p { margin: 0; max-width: 330px; color: #969e8d; font-size: 14px; }
 .pixel-icon { width: 50px; height: 50px; position: relative; image-rendering: pixelated; }
@@ -359,7 +390,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 .perf-row:hover::before { background: var(--lucuma); }
 .perf-kicker { grid-row: 1 / span 2; align-self: center; color: var(--lucuma); font-size: 9px; font-weight: 900; letter-spacing: .14em; }
-.perf-row strong { font-family: var(--display); text-transform: uppercase; font-size: 23px; letter-spacing: .04em; }
+.perf-row strong { font-family: var(--display); text-transform: none; font-size: 23px; letter-spacing: .04em; }
 .perf-row small { color: #7d8575; }
 
 .section--philosophy { background: var(--paper); color: #171a13; }
@@ -373,7 +404,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .quote-pixel::after { content: ""; position: absolute; left: 0; bottom: -14px; width: 14px; height: 14px; background: inherit; }
 .philosophy-layout blockquote { margin: 0; }
 .philosophy-layout blockquote p { font-size: clamp(46px, 5vw, 76px); }
-.philosophy-layout blockquote footer { margin-top: 24px; color: #6d772e; text-transform: uppercase; font-weight: 900; letter-spacing: .16em; font-size: 11px; }
+.philosophy-layout blockquote footer { margin-top: 24px; color: #6d772e; font-weight: 900; font-size: 12px; }
 .philosophy-copy { padding-top: 8px; color: #4e5548; }
 .philosophy-copy p:first-child { margin-top: 0; }
 
@@ -450,8 +481,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 @media (max-width: 980px) {
   :root { --shell: min(100% - 30px, 760px); }
-  .header-inner { grid-template-columns: auto auto 1fr; }
-  .header-inner > .button { display: none; }
+  .header-inner { grid-template-columns: auto auto 1fr; gap: 14px; }
+  .header-inner > .button { display: inline-flex; }
   .nav-toggle { display: block; order: 3; }
   .primary-nav {
     display: none; position: absolute; top: 72px; left: 0; right: 0;
@@ -488,7 +519,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .voxel-scene { min-height: 320px; }
   .stage-label small { display: none; }
   .capability-strip { grid-template-columns: 1fr; }
-  .capability-strip div, .capability-strip div:first-child {
+  .capability-strip div {
     padding: 15px 0; border-right: 0; border-bottom: 1px solid var(--line);
   }
   .capability-strip div:last-child { border-bottom: 0; }
@@ -651,7 +682,7 @@ body { background: var(--ink); }
   font-size: 12px;
   letter-spacing: .04em;
 }
-.capability-strip span { color: #666764; font-size: 11px; }
+.capability-strip span { color: #666764; font-size: 11px; margin-top: 5px; }
 
 .section { padding: 102px 0; }
 .section--ink { background: #13150f; border-block: 1px solid #303228; }
@@ -808,6 +839,10 @@ body { background: var(--ink); }
 .manager-links { color: #5e5f5c; }
 
 .site-footer { background: #0d0f0a; }
+.brand-word, .manager-body > strong, .footer-inner strong {
+  font-family: "Monocraft", "Consolas", monospace;
+  font-weight: 400;
+}
 .reveal { transform: translateY(16px); transition-duration: .45s; }
 
 @media (max-width: 980px) {
