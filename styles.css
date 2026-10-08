@@ -330,7 +330,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .media-layout {
   display: grid; grid-template-columns: 1.18fr .82fr; gap: 70px; align-items: center;
 }
-.media-section--reverse .media-layout { grid-template-columns: 1.08fr .92fr; gap: 56px; }
+.media-section--reverse .media-layout { grid-template-columns: .82fr 1.18fr; gap: 56px; }
 .media-section--reverse .media-frame { order: 2; }
 .media-frame { min-height: 520px; }
 .media-placeholder {
@@ -638,13 +638,6 @@ body { background: var(--ink); }
   border-color: #f3f3ef #62635f #62635f #f3f3ef;
   box-shadow: 8px 8px 0 rgba(0,0,0,.32);
 }
-.hero-stage::before {
-  content: "Preview";
-  display: block;
-  margin: 0 0 11px;
-  color: #5b5b5b;
-  font: 800 13px/1.2 var(--ui);
-}
 .voxel-scene {
   position: relative;
   inset: auto;
@@ -741,13 +734,6 @@ body { background: var(--ink); }
   border: 6px solid;
   border-color: var(--panel-light) #62635f #62635f var(--panel-light);
   box-shadow: 8px 8px 0 rgba(0,0,0,.28);
-}
-.media-frame::before {
-  content: "Preview";
-  display: block;
-  margin-bottom: 11px;
-  color: #5b5b5b;
-  font: 800 13px/1.2 var(--ui);
 }
 .media-placeholder {
   min-height: 418px;
