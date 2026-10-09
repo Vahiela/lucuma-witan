@@ -841,6 +841,8 @@ body { background: var(--ink); }
   background: #111;
 }
 .media-capture img { display: block; width: 100%; height: auto; }
+.media-video iframe { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border: 0; }
+[hidden] { display: none !important; }
 .media-capture:focus-visible { outline: 3px solid var(--lucuma); outline-offset: 5px; }
 .reveal { transform: translateY(16px); transition-duration: .45s; }
 
