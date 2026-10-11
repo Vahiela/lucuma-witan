@@ -1,0 +1,3 @@
+Monocraft by Idrees Hassan. https://github.com/IdreesInc/Monocraft
+Upstream commit: e498bf70aeb25b4bdcff1e44d878fb2cb4f7c2a9
+Original Regular TTF. SIL Open Font License 1.1; see LICENSE.txt.
