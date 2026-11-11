@@ -15,6 +15,22 @@
     node.textContent = String(new Date().getFullYear());
   });
 
+  document.querySelectorAll("[data-play]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const frame = link.closest("[data-video]");
+      if (!frame) return;
+      event.preventDefault();
+      const iframe = document.createElement("iframe");
+      iframe.src = "https://www.youtube-nocookie.com/embed/" + frame.dataset.video + "?rel=0&autoplay=1";
+      iframe.title = "Lucuma in game";
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      iframe.allowFullscreen = true;
+      frame.replaceChildren(iframe);
+      iframe.focus();
+    });
+  });
+
   const box = document.querySelector("[data-release]");
   if (!box || !window.fetch) return;
   const decode = (b64) => JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(b64), (c) => c.charCodeAt(0))));
