@@ -36,20 +36,18 @@
           <h1>Coherent Lighting</h1>
           <div class="statement">
             <p>
-              Lucuma is a lighting mod, not a shader pack. It does not replace Minecraft's renderer or restyle the
-              image: the game still draws its terrain with its own textures and resource packs, and Lucuma replaces only
-              the light. No Iris, OptiFine or shader pack is needed.
+              Lucuma is a lighting mod, not a shader pack. Minecraft keeps drawing its world as it always has, with your
+              textures and resource packs; Lucuma changes only how that world is lit. No Iris, OptiFine or shader pack
+              is needed.
             </p>
             <p>
-              Coherent means one model for all light. Sunlight, moonlight and every light-emitting block are computed
-              the same way, from the blocks of the loaded world: shadows follow block shapes, light keeps the colour of
-              its source, and lit surfaces pass light on to their surroundings. Nothing is faked to save time: no cap
-              on the number of lights, no merging of separate lights, no brightness clamps, no denoising over errors.
+              Coherent means every light follows the same rules. The sun, the moon, a torch or a pool of lava all cast
+              shadows shaped by the blocks around them, tint what they reach with their own colour, and light up the
+              space around them. Nothing is faked or left out to save time.
             </p>
             <p>
-              The work runs on the GPU as a pass over Minecraft's own frame. Results that are still valid are kept, and
-              only what changes is updated, scheduled by distance from the camera. The target is a steady frame time on
-              modest hardware, integrated graphics included; performance work continues during the beta.
+              The goal is smooth play on everyday hardware, integrated graphics included. Lucuma is in beta, and
+              performance work is ongoing.
             </p>
           </div>
 
