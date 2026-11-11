@@ -44,7 +44,7 @@ body {
   font-size: 16px;
   line-height: 1.6;
 }
-img { display: block; max-width: 100%; }
+img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
 ::selection { background: var(--gold); color: #2b220c; }
 [hidden] { display: none !important; }
