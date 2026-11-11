@@ -129,21 +129,17 @@ kbd {
 .hero { padding: 64px 0 72px; background: linear-gradient(180deg, #1d1f18, var(--ink)); }
 .hero-inner {
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-  gap: 48px; align-items: start;
+  gap: 48px; align-items: center;
 }
 .label { margin: 0 0 10px; font-family: var(--ui); font-size: 13px; color: var(--gold); }
 .hero h1 {
   margin: 0; font-family: var(--display); font-weight: 400;
   font-size: clamp(48px, 6vw, 72px); line-height: 1; letter-spacing: .01em;
 }
-.lede { margin: 18px 0 0; color: #cfd0c6; font-size: 17px; max-width: 60ch; }
-.facts { margin: 20px 0 0; padding: 0; list-style: none; max-width: 60ch; }
-.facts li { position: relative; padding-left: 20px; margin: 6px 0; color: var(--text-dim); font-size: 15px; }
-.facts li::before {
-  content: ""; position: absolute; left: 2px; top: .62em;
-  width: 8px; height: 8px; background: var(--gold);
-  box-shadow: inset 1px 1px 0 var(--gold-light), inset -1px -1px 0 var(--gold-dark);
-}
+.statement { margin-top: 22px; max-width: 62ch; }
+.statement p { margin: 0 0 14px; color: #c9cabf; font-size: 16px; }
+.statement p:first-child { color: #e2e3d9; font-size: 17px; }
+.statement p:last-child { margin-bottom: 0; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
 .fine { margin: 10px 0 0; font-family: var(--ui); font-size: 12px; color: #868879; }
 .fine a { color: var(--text-dim); text-underline-offset: 3px; }
@@ -151,16 +147,6 @@ kbd {
 .hero-media { padding: 14px; }
 .hero-media .slot { padding: 0; background: #111; }
 .hero-media iframe { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border: 0; }
-
-.approach { margin-top: 48px; }
-.approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-.approach-grid > div {
-  padding: 14px 16px;
-  background: #a9a9a4;
-  border: 4px solid; border-color: var(--slot-dark) var(--slot-light) var(--slot-light) var(--slot-dark);
-}
-.approach-grid h3 { margin: 0 0 6px; font-family: var(--ui); font-size: 14px; color: var(--gold-text); }
-.approach-grid p { margin: 0; font-size: 14px; color: var(--panel-text); }
 
 .section { padding: 72px 0; border-top: 1px solid var(--line); }
 .section--alt { background: var(--ink-2); }
@@ -237,7 +223,6 @@ a:focus-visible, .button:focus-visible { outline: 3px solid var(--gold); outline
 
 @media (max-width: 900px) {
   .hero-inner, .cols { grid-template-columns: 1fr; }
-  .approach-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 560px) {

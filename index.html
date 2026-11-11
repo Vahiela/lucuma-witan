@@ -32,20 +32,26 @@
     <section class="hero" id="top">
       <div class="shell hero-inner">
         <div class="hero-copy">
-          <p class="label">Fabric mod · Minecraft Java 26.2 / 26.3 · Beta</p>
-          <h1>Lucuma</h1>
-          <p class="lede">
-            A lighting mod for Minecraft Java. Lucuma replaces the game's light levels with lighting computed on the GPU
-            from the block grid of the loaded world. It runs as a pass over Minecraft's own rendered frame: terrain
-            rendering, textures and resource packs stay vanilla.
-          </p>
-
-          <ul class="facts">
-            <li>Sun and moon cast shadows that follow block shapes: slabs, fences, leaves, plants.</li>
-            <li>Every light-emitting block casts its own shadows, torches and lava included.</li>
-            <li>Light keeps the colour of its source, and lit surfaces bounce light onto their surroundings.</li>
-            <li>No shader loader: Iris, OptiFine or a shader pack are not required.</li>
-          </ul>
+          <p class="label">Lucuma · Fabric mod for Minecraft Java 26.2 / 26.3 · Beta</p>
+          <h1>Coherent Lighting</h1>
+          <div class="statement">
+            <p>
+              Lucuma is a lighting mod, not a shader pack. It does not replace Minecraft's renderer or restyle the
+              image: the game still draws its terrain with its own textures and resource packs, and Lucuma replaces only
+              the light. No Iris, OptiFine or shader pack is needed.
+            </p>
+            <p>
+              Coherent means one model for all light. Sunlight, moonlight and every light-emitting block are computed
+              the same way, from the blocks of the loaded world: shadows follow block shapes, light keeps the colour of
+              its source, and lit surfaces pass light on to their surroundings. Nothing is faked to save time: no cap
+              on the number of lights, no merging of separate lights, no brightness clamps, no denoising over errors.
+            </p>
+            <p>
+              The work runs on the GPU as a pass over Minecraft's own frame. Results that are still valid are kept, and
+              only what changes is updated, scheduled by distance from the camera. The target is a steady frame time on
+              modest hardware, integrated graphics included; performance work continues during the beta.
+            </p>
+          </div>
 
           <div class="actions">
             <a class="button button--accent" href="downloads/Lucuma-Manager-1.2.2.msi" data-manager-download>
@@ -63,28 +69,6 @@
         </div>
       </div>
 
-      <div class="shell">
-        <div class="panel approach">
-          <h2 class="panel-title">Approach</h2>
-          <div class="approach-grid">
-            <div>
-              <h3>Every light counts</h3>
-              <p>Shadows and colour are computed per source. No cap on the number of lights, no merging of separate
-                lights into one, no brightness clamps and no denoising that hides errors.</p>
-            </div>
-            <div>
-              <h3>Still Minecraft</h3>
-              <p>Blocks, textures and biome colours are the game's own. Lucuma changes how they are lit, not what they
-                look like. Turning it off returns vanilla lighting.</p>
-            </div>
-            <div>
-              <h3>Modest hardware</h3>
-              <p>Integrated graphics are in scope. The target is a steady frame time, including when turning into
-                terrain not yet seen, not a high average. Performance work continues during the beta.</p>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <section class="section" id="install">
