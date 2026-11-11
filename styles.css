@@ -128,10 +128,9 @@ kbd {
 
 .hero { padding: 64px 0 72px; background: linear-gradient(180deg, #1d1f18, var(--ink)); }
 .hero-inner {
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-  gap: 48px; align-items: center;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: 48px; align-items: start;
 }
-.label { margin: 0 0 10px; font-family: var(--ui); font-size: 13px; color: var(--gold); }
 .hero h1 {
   margin: 0; font-family: var(--display); font-weight: 400;
   font-size: clamp(48px, 6vw, 72px); line-height: 1; letter-spacing: .01em;
@@ -147,6 +146,8 @@ kbd {
 
 .hero-media { padding: 14px; }
 .hero-media .slot { padding: 0; background: #111; }
+.hero-side { display: grid; gap: 20px; }
+.hero-media img { display: block; width: 100%; height: auto; }
 .hero-media iframe { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border: 0; }
 
 .section { padding: 72px 0; border-top: 1px solid var(--line); }
