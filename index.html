@@ -3,249 +3,251 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#11140f">
-  <meta name="description" content="Lucuma is a Fabric lighting mod for Minecraft Java: block-aware shadows, colored light and indirect lighting, built as a next step from vanilla with performance on everyday hardware in mind.">
+  <meta name="theme-color" content="#171812">
+  <meta name="description" content="Lucuma is a Fabric lighting mod for Minecraft Java 26.2 and 26.3. It computes lighting on the GPU from the block grid: shadows from the sun, moon and every light block, coloured light and bounced light.">
   <title>Lucuma</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/lucuma-32.png">
-  <link rel="stylesheet" href="./styles.css?v=20261011">
-  <script defer src="./app.js?v=20261011"></script>
+  <link rel="icon" type="image/png" href="./assets/lucuma.png">
+  <link rel="stylesheet" href="./styles.css?v=20261111">
+  <script defer src="./app.js?v=20261111"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header" data-header>
+  <header class="site-header">
     <div class="shell header-inner">
       <a class="brand" href="#top" aria-label="Lucuma home">
-        <img class="brand-logo" src="./assets/lucuma-40.png" width="40" height="40" alt="">
+        <img class="brand-logo" src="./assets/lucuma-40.png" width="32" height="32" alt="">
         <span class="brand-word">LUCUMA</span>
       </a>
-
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
-        <span></span><span></span><span></span>
-        <span class="sr-only">Toggle navigation</span>
-      </button>
-
-      <nav class="primary-nav" id="primary-nav" aria-label="Primary" data-nav>
-        <a href="#lighting">Lighting</a>
-        <a href="#performance">Performance</a>
-        <a href="#philosophy">Philosophy</a>
-        <a href="#beta">Beta</a>
+      <nav class="primary-nav" aria-label="Sections">
+        <a href="#top">Overview</a>
+        <a href="#install">Install</a>
+        <a href="#use">Using Lucuma</a>
       </nav>
-
-      <a class="button button--small button--accent" href="https://ko-fi.com/talesstudio" target="_blank" rel="noopener noreferrer">
-        Support us
-      </a>
     </div>
   </header>
 
   <main id="main">
+
     <section class="hero" id="top">
-      <div class="hero-grid" aria-hidden="true"></div>
-      <div class="hero-glow hero-glow--one" aria-hidden="true"></div>
-      <div class="hero-glow hero-glow--two" aria-hidden="true"></div>
-
       <div class="shell hero-inner">
-        <div class="hero-copy reveal">
-          <h1>Modern Minecraft Lighting</h1>
-          <p class="hero-lede">
-            Lucuma is an alternative lighting system for Minecraft Java. It works from the blocks in your world, so a room's shape, its openings and the lights you place all matter. We're building it to feel like a next step for Minecraft, with performance that makes it worth leaving on.
+        <div class="hero-copy">
+          <p class="label">Fabric mod · Minecraft Java 26.2 / 26.3 · Beta</p>
+          <h1>Lucuma</h1>
+          <p class="lede">
+            A lighting mod for Minecraft Java. Lucuma replaces the game's light levels with lighting computed on the GPU
+            from the block grid of the loaded world. It runs as a pass over Minecraft's own rendered frame: terrain
+            rendering, textures and resource packs stay vanilla.
           </p>
-          <div class="hero-actions">
-            <a class="button button--accent manager-link" href="downloads/Lucuma-Manager-1.2.2.msi" data-manager-download>
+
+          <ul class="facts">
+            <li>Sun and moon cast shadows that follow block shapes: slabs, fences, leaves, plants.</li>
+            <li>Every light-emitting block casts its own shadows, torches and lava included.</li>
+            <li>Light keeps the colour of its source, and lit surfaces bounce light onto their surroundings.</li>
+            <li>No shader loader: Iris, OptiFine or a shader pack are not required.</li>
+          </ul>
+
+          <div class="actions">
+            <a class="button button--accent" href="downloads/Lucuma-Manager-1.2.2.msi" data-manager-download>
               <span data-manager-label>Download Lucuma Manager 1.2.2</span>
-              <span class="button-arrow" aria-hidden="true">→</span>
             </a>
-            <a class="button button--ghost" href="https://discord.gg/MGxJgnTaq" target="_blank" rel="noopener noreferrer">
-              Join the community / report a bug
-            </a>
+            <a class="button" href="#install">Requirements</a>
           </div>
-          <p class="microcopy">Runs on Fabric. No Iris, OptiFine or separate shader pack required.</p>
+          <p class="fine">Windows installer (MSI). <a href="downloads/Lucuma-Manager-1.2.2.msi.sha256" data-manager-sha>SHA-256</a></p>
         </div>
 
-        <div class="hero-stage hero-stage--capture reveal reveal--delay">
-          <div class="media-capture media-video">
-            <iframe src="https://www.youtube-nocookie.com/embed/DEwfNbRoSGs?rel=0" title="Lucuma beta release video" width="3840" height="2160" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="panel hero-media">
+          <div class="slot">
+            <iframe src="https://www.youtube-nocookie.com/embed/DEwfNbRoSGs?rel=0" title="Lucuma in game" width="1600" height="900" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy" allowfullscreen></iframe>
           </div>
         </div>
       </div>
 
-      <div class="shell capability-strip reveal">
-        <div><strong>Fabric</strong> <span>no shader loader needed</span></div>
-        <div><strong>Block-aware lighting</strong> <span>light follows the world's geometry</span></div>
-        <div><strong>Performance first</strong> <span>lower-end hardware is part of the goal</span></div>
-        <div><strong>Your own settings</strong> <span>adjust the look and lighting quality</span></div>
-      </div>
-    </section>
-
-    <section class="section section--ink" id="lighting">
       <div class="shell">
-        <div class="section-heading reveal">
-          <p class="eyebrow">LIGHTING</p>
-          <h2>It starts with the world you've built</h2>
-          <p>
-            Minecraft already knows where its blocks are. Lucuma uses that grid directly, calculates lighting on the GPU and applies it to the rendered frame. Keeping Minecraft's terrain renderer in place is a deliberate choice: Lucuma is designed to fit alongside the rest of your setup.
-          </p>
-        </div>
-
-        <div class="feature-grid">
-          <article class="feature-card reveal">
-            <span class="feature-number">01</span>
-            <div class="pixel-icon pixel-icon--sun" aria-hidden="true"></div>
-            <h3>Block shapes</h3>
-            <p>A fence, a slab and a solid wall leave different paths for light. Lucuma works with those shapes and cutouts when calculating shadows.</p>
-          </article>
-          <article class="feature-card reveal reveal--delay">
-            <span class="feature-number">02</span>
-            <div class="pixel-icon pixel-icon--lamp" aria-hidden="true"></div>
-            <h3>Colored light</h3>
-            <p>Furnaces, soul fire and portals cast their own colors onto nearby blocks. Where you place them becomes part of how a room feels.</p>
-          </article>
-          <article class="feature-card reveal reveal--delay-2">
-            <span class="feature-number">03</span>
-            <div class="pixel-icon pixel-icon--bounce" aria-hidden="true"></div>
-            <h3>Light that bounces</h3>
-            <p>Lit surfaces pass some of their light and color on to their surroundings. This indirect light brings depth to rooms and sheltered spaces.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="media-section">
-      <div class="shell media-layout">
-        <div class="media-frame media-frame--capture reveal">
-          <a class="media-capture" href="assets/lake-house-porch-4k.png" target="_blank" rel="noopener" aria-label="Open the lake house porch capture in 4K">
-            <img src="assets/lake-house-porch-4k.png" width="3840" height="2160" loading="lazy" decoding="async" alt="Warm lantern light illuminates a timber lake house porch, tall windows and flower boxes beneath a moonlit forest canopy.">
-          </a>
-        </div>
-        <div class="media-copy reveal reveal--delay">
-          <p class="eyebrow">BLOCK GEOMETRY</p>
-          <h2>A window, a wall, a place for a torch</h2>
-          <p>
-            Small decisions in a build can change its lighting. An opening lets daylight through; a pillar shelters what sits behind it; a torch brings warmth to nearby surfaces. Lucuma gives those choices more of a presence in the world.
-          </p>
-          <div class="detail-rule"></div>
-          <p class="detail-copy">Light and shadow follow the block geometry, whether the source is the sky or something you've placed yourself.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="media-section media-section--reverse">
-      <div class="shell media-layout">
-        <div class="media-frame media-frame--capture reveal">
-          <a class="media-capture" href="assets/lighting-gallery-4k.png" target="_blank" rel="noopener" aria-label="Open the lighting gallery capture in 4K">
-            <img src="assets/lighting-gallery-4k.png" width="3840" height="2160" loading="lazy" decoding="async" alt="An enclosed Minecraft gallery with warm lanterns and fire, green copper lights, white end rods, blue soul lights, and a purple Nether portal.">
-          </a>
-        </div>
-        <div class="media-copy reveal reveal--delay">
-          <p class="eyebrow">YOUR WORLD</p>
-          <h2>Find the lighting you like</h2>
-          <p>
-            You can keep the effect subtle or let colored light become part of a build. Brightness, light color and indirect-light quality have their own controls, so you can find a look that suits your world and settings that suit your hardware.
-          </p>
-          <div class="detail-rule"></div>
-          <p class="detail-copy">Your familiar blocks and textures are the starting point. No special texture pack is required.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--performance" id="performance">
-      <div class="performance-grid" aria-hidden="true"></div>
-      <div class="shell performance-layout">
-        <div class="performance-copy reveal">
-          <p class="eyebrow">PERFORMANCE</p>
-          <h2>Lighting you can leave on</h2>
-          <p>
-            Lucuma has to hold up while you play: turning a corner, crossing a forest or loading new ground. Lower-end GPUs and integrated graphics have been part of the goal from the start. The time and memory each lighting feature costs matter as much as how it looks.
-          </p>
-          <p>
-            The renderer keeps useful lighting results and schedules updates over time, putting new work into the parts of the world that need it. That's the approach behind the performance work, which is still ongoing during the beta.
-          </p>
-        </div>
-
-        <div class="performance-panel reveal reveal--delay">
-          <div class="perf-row">
-            <span class="perf-kicker">HARDWARE</span>
-            <strong>Lower-end GPUs</strong>
-            <small>Integrated graphics are part of the target.</small>
-          </div>
-          <div class="perf-row">
-            <span class="perf-kicker">PRIORITY</span>
-            <strong>Smooth movement</strong>
-            <small>Turns and new terrain matter as much as average FPS.</small>
-          </div>
-          <div class="perf-row">
-            <span class="perf-kicker">METHOD</span>
-            <strong>Keep useful lighting work</strong>
-            <small>Reuse valid results and update what changes.</small>
-          </div>
-          <div class="perf-row">
-            <span class="perf-kicker">RESOURCES</span>
-            <strong>GPU time and memory</strong>
-            <small>Better lighting has to fit within both.</small>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--philosophy" id="philosophy">
-      <div class="shell philosophy-layout">
-        <div class="philosophy-mark reveal" aria-hidden="true">
-          <span class="quote-pixel quote-pixel--1"></span>
-          <span class="quote-pixel quote-pixel--2"></span>
-        </div>
-        <blockquote class="reveal reveal--delay">
-          <p>An heir to vanilla lighting</p>
-          <footer>Honoring Minecraft Lighting</footer>
-        </blockquote>
-        <div class="philosophy-copy reveal">
-          <p>
-            The name comes from lúcuma, a Peruvian fruit with a distinctive flavor. Its place alongside vanilla is the idea behind Lucuma too: something with its own character, built around Minecraft's blocks and textures.
-          </p>
-          <p>
-            Lucuma should feel like a lighting system Minecraft could grow into. It keeps the game's visual language and gives you room to decide how your world looks.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--beta" id="beta">
-      <div class="shell beta-card reveal">
-        <div class="beta-copy">
-          <p class="eyebrow">BETA</p>
-          <h2>Try Lucuma in your own world</h2>
-          <p>
-            Start with a Fabric instance and choose it in Lucuma Manager. The Manager installs Lucuma and adds the matching Fabric API when needed. It also handles updates, repair, rollback and uninstall.
-          </p>
-          <p class="detail-copy">Minecraft Java 26.2 and 26.3 · Fabric Loader 0.19.3–0.19.5 · OpenGL. The Manager is available for Windows. Need help? Describe the issue in Discord. Create report in the Manager gathers troubleshooting details locally; share only the individual text files support requests.</p>
-          <div class="beta-actions">
-            <a class="button button--accent button--large manager-link" href="downloads/Lucuma-Manager-1.2.2.msi" data-manager-download>
-              <span data-manager-label>Download Lucuma Manager 1.2.2</span>
-              <span class="button-arrow" aria-hidden="true">→</span>
-            </a>
-            <a class="button button--ghost" href="https://discord.gg/MGxJgnTaq" target="_blank" rel="noopener noreferrer">
-              Join the community / report a bug
-            </a>
-            <a class="text-link" href="https://youtu.be/uZ6i1iXgQbc" target="_blank" rel="noopener noreferrer" hidden>See Lucuma in-game ↗</a>
-          </div>
-          <p class="support-copy">If you'd like to support the work, you can <a href="https://ko-fi.com/talesstudio" target="_blank" rel="noopener noreferrer">buy us a lúcuma</a> on Ko-fi.</p>
-        </div>
-
-        <div class="manager-card" aria-label="Lucuma Manager preview">
-          <div class="manager-titlebar">
-            <img class="manager-mini-logo" src="./assets/lucuma-24.png" width="24" height="24" alt="">
-            <span>LUCUMA MANAGER</span>
-            <div class="window-dots"><i></i><i></i><i></i></div>
-          </div>
-          <div class="manager-body">
-            <span class="manager-status">● BETA CHANNEL</span>
-            <strong>LUCUMA</strong>
-            <div class="manager-version">
-              <span>INSTALLATION</span>
-              <b>Ready</b>
+        <div class="panel approach">
+          <h2 class="panel-title">Approach</h2>
+          <div class="approach-grid">
+            <div>
+              <h3>Every light counts</h3>
+              <p>Shadows and colour are computed per source. No cap on the number of lights, no merging of separate
+                lights into one, no brightness clamps and no denoising that hides errors.</p>
             </div>
-            <div class="manager-primary">INSTALL LUCUMA <span>→</span></div>
-            <div class="manager-links"><span>Repair</span><span>Rollback</span><span>Settings</span></div>
+            <div>
+              <h3>Still Minecraft</h3>
+              <p>Blocks, textures and biome colours are the game's own. Lucuma changes how they are lit, not what they
+                look like. Turning it off returns vanilla lighting.</p>
+            </div>
+            <div>
+              <h3>Modest hardware</h3>
+              <p>Integrated graphics are in scope. The target is a steady frame time, including when turning into
+                terrain not yet seen, not a high average. Performance work continues during the beta.</p>
+            </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="install">
+      <div class="shell">
+        <h2>Install</h2>
+
+        <div class="cols">
+          <div class="panel">
+            <h3 class="panel-title">Requirements</h3>
+            <table class="slot spec">
+              <tbody>
+                <tr><th scope="row">Minecraft</th><td>Java Edition 26.2 or 26.3</td></tr>
+                <tr><th scope="row">Fabric Loader</th><td>0.18.4 or newer for 26.2; 0.19.3 or newer for 26.3</td></tr>
+                <tr><th scope="row">Fabric API</th><td>Required. The Manager adds the matching version if it is missing
+                  (0.158.0 for 26.2, 0.162.0 for 26.3).</td></tr>
+                <tr><th scope="row">Java</th><td>25, as used by Minecraft 26.x. The official launcher includes it.</td></tr>
+                <tr><th scope="row">Graphics</th><td>A GPU with OpenGL 4.3. Where Minecraft offers a choice, set
+                  <em>Options › Video Settings › Graphics API</em> to <em>Prefer OpenGL</em>; under Vulkan Lucuma stays off.</td></tr>
+                <tr><th scope="row">Installer</th><td>Lucuma Manager, Windows only. It is currently the supported way to
+                  install Lucuma; it needs no separate Java.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="panel">
+            <h3 class="panel-title">Steps</h3>
+            <ol class="steps">
+              <li>Install Fabric Loader for your Minecraft version with the installer from
+                <a href="https://fabricmc.net/use/installer/" target="_blank" rel="noopener noreferrer">fabricmc.net</a>,
+                and start that profile once. The Manager does not install Fabric.</li>
+              <li>Download and run the Lucuma Manager installer.</li>
+              <li>Close Minecraft. In the Manager, select your Fabric instance. Profiles of the official launcher and
+                the Microsoft Store launcher are detected; for other launchers, choose the instance folder or its
+                <code>mods</code> folder.</li>
+              <li>Press <b>Install</b>. The Manager downloads the release, checks its signatures and SHA-256, places the
+                Lucuma jar in <code>mods</code> and adds Fabric API if it is missing.</li>
+              <li>Start Minecraft with that profile.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="cols">
+          <div class="panel">
+            <h3 class="panel-title">Manager actions</h3>
+            <dl class="slot defs">
+              <dt>Update</dt>
+              <dd>The Manager checks for a new release each time it opens. The Manager updates itself the same way.</dd>
+              <dt>Repair</dt>
+              <dd>Restores a missing or damaged Lucuma jar from a verified release.</dd>
+              <dt>Roll Back</dt>
+              <dd>Returns to the previous verified release kept on disk. Works offline.</dd>
+              <dt>Uninstall</dt>
+              <dd><em>Settings › Manage Installation</em>. Removes only the Lucuma jar; Fabric API, other mods, worlds
+                and settings stay unless you choose to remove Lucuma's settings too.</dd>
+              <dt>Create report</dt>
+              <dd>Collects versions, hardware, logs and Lucuma settings into local text files for a bug report.
+                Nothing is uploaded.</dd>
+            </dl>
+            <p class="note">The Manager never replaces other mods to make Lucuma fit. A conflicting Fabric API is kept
+              and reported. Close Minecraft before any action that changes its mods.</p>
+          </div>
+
+          <div class="panel">
+            <h3 class="panel-title">Current release</h3>
+            <div class="slot release" data-release>
+              <p class="release-head"><b data-release-title>Lucuma 0.4.4</b> <span data-release-date>2026-10-14</span></p>
+              <pre class="release-notes" data-release-notes>Fixes
+- Worlds no longer freeze while loading on NVIDIA graphics cards. The first time a new version starts, the game stays responsive and uses vanilla lighting for a short while until Lucuma's lighting is ready.
+- Shadows from torches and other block lights are now exact at the edges of blocks, in caves too.
+
+Improvements
+- The first launch after an update gets Lucuma's lighting on screen sooner.</pre>
+            </div>
+            <p class="note">Privacy: no account, no telemetry, no background service. The Manager contacts only this
+              site, and only to download signed releases. The mod sends nothing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="use">
+      <div class="shell">
+        <h2>Using Lucuma</h2>
+
+        <div class="cols">
+          <div class="panel">
+            <h3 class="panel-title">Basics</h3>
+            <dl class="slot defs">
+              <dt>First start</dt>
+              <dd>The first time a new version runs, the world loads with vanilla lighting for a while until Lucuma's
+                lighting is ready. The game stays playable meanwhile; later starts are faster.</dd>
+              <dt>Settings</dt>
+              <dd>Press <kbd>F6</kbd> in game. The key can be changed in <em>Options › Controls › Key Binds</em>,
+                under Miscellaneous. Changes are saved when you press <b>Done</b>.</dd>
+              <dt>Off switch</dt>
+              <dd><b>Lucuma: on / off</b> in the settings returns vanilla lighting without restarting.</dd>
+              <dt>Settings file</dt>
+              <dd><code>config/lucuma.json</code> in the instance folder. Delete it with the game closed to return to
+                the defaults.</dd>
+            </dl>
+          </div>
+
+          <div class="panel">
+            <h3 class="panel-title">If something is wrong</h3>
+            <dl class="slot defs">
+              <dt>Lighting looks vanilla</dt>
+              <dd>On a first start, wait until Lucuma's lighting appears. Otherwise check that <b>Lucuma: on</b> is set and
+                that the Graphics API is OpenGL.</dd>
+              <dt>Low frame rate</dt>
+              <dd>Lower <b>Radiosity quality</b> and <b>Sun shadow detail distance</b>, and set <b>Far lighting</b> to
+                <em>per block past 64</em>. Render distance affects Lucuma's cost as it does vanilla's.</dd>
+              <dt>Bug or crash</dt>
+              <dd>Describe it on <a href="https://discord.gg/MGxJgnTaq" target="_blank" rel="noopener noreferrer">Discord</a>.
+                Use <b>Create report</b> in the Manager and send only the files you are asked for. The report hides your
+                Windows user name by default; review the files before sharing them.</dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3 class="panel-title">Settings reference <span class="panel-sub">F6 menu, main page</span></h3>
+          <div class="slot table-wrap">
+            <table class="settings">
+              <thead>
+                <tr><th scope="col">Setting</th><th scope="col">Range</th><th scope="col">Effect</th></tr>
+              </thead>
+              <tbody>
+                <tr class="group"><th colspan="3" scope="rowgroup">Sun and sky</th></tr>
+                <tr><td>Brightness</td><td>0.1 – 6</td><td>Overall exposure of the lit image.</td></tr>
+                <tr><td>Sunlight</td><td>0 – 8</td><td>Strength of direct sunlight and moonlight.</td></tr>
+                <tr><td>Sun tilt</td><td>−45° – 45°</td><td>Leans the path of the sun and moon north or south, and every shadow with it. 0 is Minecraft's path straight overhead.</td></tr>
+                <tr><td>Tilt dims daylight</td><td>on / off</td><td>On: a tilted sun stands lower at noon, so the day is slightly dimmer. Off: daylight stays as bright as with no tilt.</td></tr>
+                <tr><td>Skylight</td><td>0 – 8</td><td>Fill light from the sky in shadow. Lower values give daylight more contrast.</td></tr>
+                <tr><td>Distant skylight</td><td>0 – 1</td><td>Sky light on terrain beyond the lit area around you.</td></tr>
+                <tr><td>Water depth dimming</td><td>0 – 0.6</td><td>How quickly water darkens sunlight and skylight with depth. 0 leaves water as clear as air.</td></tr>
+
+                <tr class="group"><th colspan="3" scope="rowgroup">Block light</th></tr>
+                <tr><td>Block light</td><td>0 – 8</td><td>Brightness of torches, lava, lamps and every other light block. Reach is unchanged.</td></tr>
+                <tr><td>Light source glow</td><td>0 – 2</td><td>Brightness of a light's own visible surface. The light it casts is unchanged.</td></tr>
+                <tr><td>Block light shadows</td><td>0 – 1</td><td>Sharpness of block lights' shadows. Low adds soft fill light; high keeps full shadow contrast.</td></tr>
+                <tr><td>Block light reach</td><td>0.1 – 6</td><td>How far block lights reach.</td></tr>
+                <tr><td>Bounced light</td><td>0 – 4</td><td>How much light bounces off surfaces.</td></tr>
+
+                <tr class="group"><th colspan="3" scope="rowgroup">Colour</th></tr>
+                <tr><td>Light colour</td><td>0 – 1</td><td>0 gives white light, 1 each light's own colour. Less colour also makes light brighter.</td></tr>
+                <tr><td>Light hue</td><td>1 – 3</td><td>How deep a light's hue reads on lit surfaces. Lower is paler; 2.2 is the flame's own colour.</td></tr>
+                <tr><td>Texture colour</td><td>0 – 1</td><td>How much of Minecraft's texture and biome colour is kept.</td></tr>
+
+                <tr class="group"><th colspan="3" scope="rowgroup">Look</th></tr>
+                <tr><td>Smoothness</td><td>0 – 1</td><td>Softens lighting across block edges.</td></tr>
+                <tr><td>Contact shadows</td><td>0 – 1</td><td>Darkening where surfaces meet.</td></tr>
+                <tr><td>Lighting resolution</td><td>off, 8, 16, 32, 64</td><td>Lighting texels per block edge. 16 matches the block textures; off gives a smooth gradient.</td></tr>
+
+                <tr class="group"><th colspan="3" scope="rowgroup">Quality and cost</th></tr>
+                <tr><td>Bounce mode</td><td>Radiosity / Classic</td><td>How bounced light is computed. Radiosity is the default.</td></tr>
+                <tr><td>Radiosity quality</td><td>8, 16, 32, 64 rays</td><td>Rays per surface for bounced light. Fewer rays cost less.</td></tr>
+                <tr><td>Sun shadow detail distance</td><td>0.3 – 1</td><td>Fraction of the render distance that keeps full sun-shadow detail.</td></tr>
+                <tr><td>Far lighting</td><td>exact, past 128 / 96 / 64</td><td>Beyond this distance, direct light is resolved per block instead of in full detail.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note">The <b>Advanced…</b> page holds development controls and debug views. They are not needed for
+            normal play.</p>
         </div>
       </div>
     </section>
@@ -254,11 +256,15 @@
   <footer class="site-footer">
     <div class="shell footer-inner">
       <div>
-        <strong>LUCUMA</strong>
-        <p>© <span data-year>2026</span> Tales Studio. All rights reserved.</p>
+        <span class="brand-word">LUCUMA</span>
+        <p>© <span data-year>2026</span> Tales Studio. Named after the lúcuma, a Peruvian fruit.</p>
       </div>
-      <p class="footer-legal">Lucuma is an independent project and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft.</p>
-      <a href="#top" class="back-top">Back to top ↑</a>
+      <p class="footer-links">
+        <a href="https://discord.gg/MGxJgnTaq" target="_blank" rel="noopener noreferrer">Discord</a>
+        <a href="https://ko-fi.com/talesstudio" target="_blank" rel="noopener noreferrer">Ko-fi</a>
+      </p>
+      <p class="footer-legal">Lucuma is an independent project and is not affiliated with, endorsed by, or sponsored by
+        Mojang Studios or Microsoft.</p>
     </div>
   </footer>
 </body>

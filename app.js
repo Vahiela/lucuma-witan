@@ -2,66 +2,35 @@
   const root = document.documentElement;
   const managerUrl = (root.dataset.managerUrl || "").trim();
   const managerVersion = managerUrl.match(/Lucuma-Manager-(\d+\.\d+\.\d+)\.msi$/)?.[1];
-  const managerLinks = document.querySelectorAll("[data-manager-download]");
-  const managerLabels = document.querySelectorAll("[data-manager-label]");
 
-  managerLinks.forEach((link) => {
-    if (managerUrl) {
-      link.href = managerUrl;
-      link.classList.remove("is-disabled");
-      link.removeAttribute("aria-disabled");
-      managerLabels.forEach((label) => {
-        const caption = label.dataset.managerLabel === "short" ? "Get Lucuma" : "Download Lucuma Manager";
-        label.textContent = caption + (managerVersion ? " " + managerVersion : "");
-      });
-      return;
-    }
-
-    link.href = "#beta";
-    link.classList.add("is-disabled");
-    link.setAttribute("aria-disabled", "true");
-    link.addEventListener("click", (event) => {
-      if (link.closest("#beta")) event.preventDefault();
+  if (managerUrl) {
+    document.querySelectorAll("[data-manager-download]").forEach((link) => { link.href = managerUrl; });
+    document.querySelectorAll("[data-manager-sha]").forEach((link) => { link.href = managerUrl + ".sha256"; });
+    document.querySelectorAll("[data-manager-label]").forEach((label) => {
+      label.textContent = "Download Lucuma Manager" + (managerVersion ? " " + managerVersion : "");
     });
-  });
-
-  const header = document.querySelector("[data-header]");
-  const setHeaderState = () => {
-    header?.classList.toggle("is-scrolled", window.scrollY > 18);
-  };
-  setHeaderState();
-  window.addEventListener("scroll", setHeaderState, { passive: true });
-
-  const toggle = document.querySelector("[data-nav-toggle]");
-  const nav = document.querySelector("[data-nav]");
-  toggle?.addEventListener("click", () => {
-    const open = toggle.getAttribute("aria-expanded") === "true";
-    toggle.setAttribute("aria-expanded", String(!open));
-    nav?.classList.toggle("is-open", !open);
-  });
-
-  nav?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("is-open");
-      toggle?.setAttribute("aria-expanded", "false");
-    });
-  });
+  }
 
   document.querySelectorAll("[data-year]").forEach((node) => {
     node.textContent = String(new Date().getFullYear());
   });
 
-  const reveals = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    const observer = new IntersectionObserver((entries, io) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        io.unobserve(entry.target);
-      });
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
-    reveals.forEach((node) => observer.observe(node));
-  } else {
-    reveals.forEach((node) => node.classList.add("is-visible"));
-  }
+  const box = document.querySelector("[data-release]");
+  if (!box || !window.fetch) return;
+  const decode = (b64) => JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(b64), (c) => c.charCodeAt(0))));
+  fetch("updates/latest.json", { cache: "no-cache" })
+    .then((r) => (r.ok ? r.json() : Promise.reject()))
+    .then((data) => {
+      const manifest = decode(data.signed_manifest);
+      const notes = String(manifest.release_notes || "").trim();
+      if (!notes) return;
+      const lines = notes.split("\n");
+      const title = lines[0].trim();
+      const body = lines.slice(1).join("\n").trim();
+      box.querySelector("[data-release-title]").textContent = title;
+      box.querySelector("[data-release-notes]").textContent = body;
+      const date = String(manifest.published_at || "").slice(0, 10);
+      if (date) box.querySelector("[data-release-date]").textContent = date;
+    })
+    .catch(() => {});
 })();
