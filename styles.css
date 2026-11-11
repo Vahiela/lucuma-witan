@@ -139,6 +139,7 @@ kbd {
 .statement { margin-top: 22px; max-width: 62ch; }
 .statement p { margin: 0 0 14px; color: #c9cabf; font-size: 16px; }
 .statement p:first-child { color: #e2e3d9; font-size: 17px; }
+.statement .statement-fine { font-family: var(--ui); font-size: 13px; color: #9a9c90; }
 .statement p:last-child { margin-bottom: 0; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
 .fine { margin: 10px 0 0; font-family: var(--ui); font-size: 12px; color: #868879; }
