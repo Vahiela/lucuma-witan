@@ -37,17 +37,14 @@
           <div class="statement">
             <p>
               Lucuma is another take on Minecraft's light: one that respects both the world's geometry and the game's
-              look. Light lands on the same pixel grid as Minecraft's textures, so it reads as part of the art, not as an
-              effect laid over it. It is meant as the successor to vanilla lighting.
+              look. Light is computed at the resolution you see. Every block face is a 16 × 16 grid, the same as its
+              texture, and each of its 256 texels is lit on its own. Nothing is estimated, upscaled or denoised: what you
+              see is what was computed.
             </p>
             <p>
-              Every light lives in one system: the sun and moon, torches, lanterns, glowing blocks. Shadows take the
-              shape of the blocks that cast them, light carries the colour of its source, and light that passes through
-              stained glass takes on the colour of the glass.
-            </p>
-            <p>
-              What you see is computed, not estimated. There is no denoiser smoothing over half-finished work, so the
-              light looks like it belongs to the world.
+              Every light lives in one system: the sun and moon, point lights such as torches and lanterns, area lights
+              such as lava and glowstone. Coloured lighting, bounced light and light transmission through translucent
+              blocks all come from the same light transport. It is meant as the successor to vanilla lighting.
             </p>
             <p class="statement-fine">
               A Fabric mod: no Iris, OptiFine or shader pack needed. Built to run on everyday hardware; Lucuma is in
