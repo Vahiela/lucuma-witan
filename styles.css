@@ -70,7 +70,7 @@ a { color: inherit; }
 .brand-word { font-family: "Monocraft", var(--ui); font-size: 20px; letter-spacing: .06em; color: var(--gold); }
 .primary-nav { display: flex; gap: 24px; margin-left: auto; }
 .primary-nav a {
-  font-family: var(--ui); font-size: 13px; color: var(--text-dim); text-decoration: none;
+  font-family: var(--ui); font-size: 13px; color: var(--text-dim); text-decoration: none; white-space: nowrap;
 }
 .primary-nav a:hover, .primary-nav a:focus-visible { color: var(--gold-hi); }
 
@@ -124,6 +124,7 @@ kbd {
 }
 .button--accent:hover, .button--accent:focus-visible { background: var(--gold-hi); }
 .button--accent:active { border-color: var(--gold-dark) var(--gold-light) var(--gold-light) var(--gold-dark); }
+.button--small { min-height: 36px; padding: 0 12px; font-size: 12px; border-width: 3px; }
 .button.is-disabled { opacity: .7; cursor: default; }
 
 .hero { padding: 64px 0 72px; background: linear-gradient(180deg, #1d1f18, var(--ink)); }
@@ -241,6 +242,7 @@ a:focus-visible, .button:focus-visible { outline: 3px solid var(--gold); outline
   .primary-nav { gap: 14px; }
   .primary-nav a { font-size: 12px; }
   .brand-word { display: none; }
+  .header-inner .button--small { padding: 0 8px; font-size: 11px; }
   .hero { padding: 40px 0 56px; }
   .panel { padding: 14px; border-width: 4px; }
   .section { padding: 56px 0; }
