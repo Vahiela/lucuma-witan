@@ -143,13 +143,26 @@
           <div class="panel">
             <h3 class="panel-title">Current release</h3>
             <div class="slot release" data-release>
-              <p class="release-head"><b data-release-title>Lucuma 0.4.4</b> <span data-release-date>2026-10-14</span></p>
-              <pre class="release-notes" data-release-notes>Fixes
-- Worlds no longer freeze while loading on NVIDIA graphics cards. The first time a new version starts, the game stays responsive and uses vanilla lighting for a short while until Lucuma's lighting is ready.
-- Shadows from torches and other block lights are now exact at the edges of blocks, in caves too.
+              <p class="release-head"><b data-release-title>Lucuma 0.4.5</b> <span data-release-date>2026-11-14</span></p>
+              <pre class="release-notes" data-release-notes>New
+- Bounced light, rebuilt: light now spreads from lit surfaces through the world and around corners, from the same system that makes the direct light. One bounce system replaces the old Radiosity and Classic modes.
+- Sun and moon shadows are resolved per texel, so they stay sharp and steady as the sun moves.
+- Light passes through glass and stained glass, and takes the glass's colour.
+- Resource packs with LabPBR maps: normal maps give surfaces relief under the sun and moon, smooth and metal surfaces catch sun and moon highlights, emissive textures glow only where their texels do, and texture ambient occlusion darkens crevices. Without such a pack nothing changes.
+- Water catches the glint of the sun and moon.
 
-Improvements
-- The first launch after an update gets Lucuma's lighting on screen sooner.</pre>
+Fixes
+- Light no longer leaks between two blocks that touch only at an edge.
+- Grass and other plants no longer smear their light onto the ground at their base.
+- Stair steps shade their own treads, bounced light blends smoothly from block to block, and water above waterlogged plants no longer shows square patches.
+- Plants no longer shadow themselves.
+- Rooms that were closed off while the world loaded are lit correctly.
+- Held items are lit correctly, also under slabs, paths and carpets, and things Minecraft draws as glowing stay lit.
+- Joining a world and travelling through portals freeze far less, and the first start after an update is much faster.
+- Views over water cost less.
+
+Settings
+- Bounce mode, Radiosity quality and Sun shadow detail distance are gone from the settings: bounced light has a single system now. Defaults for new installs are unchanged.</pre>
             </div>
             <p class="note">Privacy: no account, no telemetry, no background service. The Manager contacts only this
               site, and only to download signed releases. The mod sends nothing.</p>
@@ -172,6 +185,9 @@ Improvements
               <dt>Settings</dt>
               <dd>Press <kbd>F6</kbd> in game. The key can be changed in <em>Options › Controls › Key Binds</em>,
                 under Miscellaneous. Changes are saved when you press <b>Done</b>.</dd>
+              <dt>Material packs</dt>
+              <dd>Resource packs with LabPBR maps add relief and sun and moon highlights. The Manager's <b>Lucuma PBR</b>
+                tab makes one for an instance from its own textures; without such a pack nothing changes.</dd>
               <dt>Off switch</dt>
               <dd><b>Lucuma: on / off</b> in the settings returns vanilla lighting without restarting.</dd>
               <dt>Settings file</dt>
@@ -187,8 +203,8 @@ Improvements
               <dd>On a first start, wait until Lucuma's lighting appears. Otherwise check that <b>Lucuma: on</b> is set and
                 that the Graphics API is OpenGL.</dd>
               <dt>Low frame rate</dt>
-              <dd>Lower <b>Radiosity quality</b> and <b>Sun shadow detail distance</b>, and set <b>Far lighting</b> to
-                <em>per block past 64</em>. Render distance affects Lucuma's cost as it does vanilla's.</dd>
+              <dd>Lower <b>Lighting resolution</b> and set <b>Far lighting</b> to <em>per block past 64</em>.
+                Render distance affects Lucuma's cost as it does vanilla's.</dd>
               <dt>Bug or crash</dt>
               <dd>Describe it on <a href="https://discord.gg/MGxJgnTaq" target="_blank" rel="noopener noreferrer">Discord</a>.
                 Use <b>Create report</b> in the Manager and send only the files you are asked for. The report hides your
@@ -232,9 +248,6 @@ Improvements
                 <tr><td>Lighting resolution</td><td>off, 8, 16, 32, 64</td><td>Lighting texels per block edge. 16 matches the block textures; off gives a smooth gradient.</td></tr>
 
                 <tr class="group"><th colspan="3" scope="rowgroup">Quality and cost</th></tr>
-                <tr><td>Bounce mode</td><td>Radiosity / Classic</td><td>How bounced light is computed. Radiosity is the default.</td></tr>
-                <tr><td>Radiosity quality</td><td>8, 16, 32, 64 rays</td><td>Rays per surface for bounced light. Fewer rays cost less.</td></tr>
-                <tr><td>Sun shadow detail distance</td><td>0.3 – 1</td><td>Fraction of the render distance that keeps full sun-shadow detail.</td></tr>
                 <tr><td>Far lighting</td><td>exact, past 128 / 96 / 64</td><td>Beyond this distance, direct light is resolved per block instead of in full detail.</td></tr>
               </tbody>
             </table>
