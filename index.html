@@ -144,26 +144,19 @@
           <div class="panel">
             <h3 class="panel-title">Current release</h3>
             <div class="slot release" data-release>
-              <p class="release-head"><b data-release-title>Lucuma 0.4.5</b> <span data-release-date>2026-11-14</span></p>
+              <p class="release-head"><b data-release-title>Lucuma 0.4.6</b> <span data-release-date>2026-11-20</span></p>
               <pre class="release-notes" data-release-notes>New
-- Bounced light, rebuilt: light now spreads from lit surfaces through the world and around corners, from the same system that makes the direct light. One bounce system replaces the old Radiosity and Classic modes.
-- Sun and moon shadows are resolved per texel, so they stay sharp and steady as the sun moves.
-- Light passes through glass and stained glass, and takes the glass's colour.
-- Resource packs with LabPBR maps: normal maps give surfaces relief under the sun and moon, smooth and metal surfaces catch sun and moon highlights, emissive textures glow only where their texels do, and texture ambient occlusion darkens crevices. Without such a pack nothing changes.
-- Water catches the glint of the sun and moon.
+- Bounced light is now worked out once in the world and only looked up on screen, instead of being recomputed for every pixel each frame. Open views, and views over water in particular, cost noticeably less.
+- Resource packs with LabPBR maps: smooth and metal surfaces now also catch highlights from torches, lanterns, lava and every other light block, not only from the sun and moon.
+- Reset to defaults in the settings returns every setting to the values Lucuma ships with.
 
 Fixes
-- Light no longer leaks between two blocks that touch only at an edge.
-- Grass and other plants no longer smear their light onto the ground at their base.
-- Stair steps shade their own treads, bounced light blends smoothly from block to block, and water above waterlogged plants no longer shows square patches.
-- Plants no longer shadow themselves.
-- Rooms that were closed off while the world loaded are lit correctly.
-- Held items are lit correctly, also under slabs, paths and carpets, and things Minecraft draws as glowing stay lit.
-- Joining a world and travelling through portals freeze far less, and the first start after an update is much faster.
-- Views over water cost less.
+- On some AMD graphics cards, sunlight shadows and bounced light never appeared.
 
 Settings
-- Bounce mode, Radiosity quality and Sun shadow detail distance are gone from the settings: bounced light has a single system now. Defaults for new installs are unchanged.</pre>
+- Far lighting is now called Far sun shadows: it only ever changed how distant sun and moon shadows are traced.
+- New defaults for new installs: softer block light shadows, and sun shadows in full detail at any distance. Existing settings are kept.
+- The first start after installing or updating takes about 2 minutes before Lucuma's lighting appears, while it prepares its shaders.</pre>
             </div>
             <p class="note">Privacy: no account, no telemetry, no background service. The Manager contacts only this
               site, and only to download signed releases. The mod sends nothing.</p>
