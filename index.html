@@ -114,7 +114,8 @@
                 <code>mods</code> folder.</li>
               <li>Press <b>Install</b>. The Manager downloads the release, checks its signatures and SHA-256, places the
                 Lucuma jar in <code>mods</code> and adds Fabric API if it is missing.</li>
-              <li>Start Minecraft with that profile.</li>
+              <li>Start Minecraft with that profile. The first start takes about 2 minutes before Lucuma's lighting
+                appears: Lucuma prepares its shaders while the world shows vanilla lighting. Later starts are faster.</li>
             </ol>
           </div>
         </div>
@@ -180,19 +181,21 @@ Settings
             <h3 class="panel-title">Basics</h3>
             <dl class="slot defs">
               <dt>First start</dt>
-              <dd>The first time a new version runs, the world loads with vanilla lighting for a while until Lucuma's
-                lighting is ready. The game stays playable meanwhile; later starts are faster.</dd>
+              <dd>The first time Lucuma runs, and the first time after each update, it prepares its shaders: for about
+                2 minutes the world shows vanilla lighting until Lucuma's lighting is ready. The game stays playable
+                meanwhile; later starts are faster.</dd>
               <dt>Settings</dt>
               <dd>Press <kbd>F6</kbd> in game. The key can be changed in <em>Options › Controls › Key Binds</em>,
                 under Miscellaneous. Changes are saved when you press <b>Done</b>.</dd>
               <dt>Material packs</dt>
-              <dd>Resource packs with LabPBR maps add relief and sun and moon highlights. The Manager's <b>Lucuma PBR</b>
+              <dd>Resource packs with LabPBR maps add relief and highlights from the sun, the moon and light blocks. The Manager's <b>Lucuma PBR</b>
                 tab makes one for an instance from its own textures; without such a pack nothing changes.</dd>
               <dt>Off switch</dt>
               <dd><b>Lucuma: on / off</b> in the settings returns vanilla lighting without restarting.</dd>
               <dt>Settings file</dt>
-              <dd><code>config/lucuma.json</code> in the instance folder. Delete it with the game closed to return to
-                the defaults.</dd>
+              <dd><code>config/lucuma.json</code> in the instance folder. <b>Reset to defaults</b> in the settings
+                returns every setting to the values Lucuma ships with; deleting the file with the game closed does the
+                same.</dd>
             </dl>
           </div>
 
@@ -200,10 +203,10 @@ Settings
             <h3 class="panel-title">If something is wrong</h3>
             <dl class="slot defs">
               <dt>Lighting looks vanilla</dt>
-              <dd>On a first start, wait until Lucuma's lighting appears. Otherwise check that <b>Lucuma: on</b> is set and
+              <dd>On a first start, wait about 2 minutes for Lucuma's lighting to appear. Otherwise check that <b>Lucuma: on</b> is set and
                 that the Graphics API is OpenGL.</dd>
               <dt>Low frame rate</dt>
-              <dd>Lower <b>Lighting resolution</b> and set <b>Far lighting</b> to <em>per block past 64</em>.
+              <dd>Lower <b>Lighting resolution</b> and set <b>Far sun shadows</b> to <em>per block past 64</em>.
                 Render distance affects Lucuma's cost as it does vanilla's.</dd>
               <dt>Bug or crash</dt>
               <dd>Describe it on <a href="https://discord.gg/MGxJgnTaq" target="_blank" rel="noopener noreferrer">Discord</a>.
@@ -248,7 +251,11 @@ Settings
                 <tr><td>Lighting resolution</td><td>off, 8, 16, 32, 64</td><td>Lighting texels per block edge. 16 matches the block textures; off gives a smooth gradient.</td></tr>
 
                 <tr class="group"><th colspan="3" scope="rowgroup">Quality and cost</th></tr>
-                <tr><td>Far lighting</td><td>exact, past 128 / 96 / 64</td><td>Beyond this distance, direct light is resolved per block instead of in full detail.</td></tr>
+                <tr><td>Far sun shadows</td><td>exact, past 128 / 96 / 64</td><td>Beyond this distance, sun and moon shadows are resolved per block instead of in full detail, which costs less.</td></tr>
+
+                <tr class="group"><th colspan="3" scope="rowgroup">General</th></tr>
+                <tr><td>Lucuma</td><td>on / off</td><td>Off returns Minecraft's own lighting without restarting.</td></tr>
+                <tr><td>Reset to defaults</td><td>button</td><td>Returns every setting to the values Lucuma ships with. Click twice to confirm, then Done to keep them.</td></tr>
               </tbody>
             </table>
           </div>
