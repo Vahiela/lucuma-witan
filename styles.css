@@ -159,8 +159,9 @@ kbd {
 .media-frame { position: relative; aspect-ratio: 16 / 9; overflow: hidden; }
 .media-frame img { width: 100%; height: 100%; object-fit: cover; }
 .play {
-  position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%);
-  gap: 10px; box-shadow: 4px 4px 0 rgba(0, 0, 0, .45);
+  position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 2;
+  min-height: 32px; padding: 0 10px; font-size: 11px; border-width: 3px;
+  gap: 8px; box-shadow: 3px 3px 0 rgba(0, 0, 0, .45); white-space: nowrap;
   opacity: 0;
   transition: opacity .2s ease, transform .14s ease, box-shadow .14s ease, background .14s ease, border-color .14s ease;
 }
@@ -169,6 +170,24 @@ kbd {
   width: 0; height: 0; border-style: solid; border-width: 6px 0 6px 10px;
   border-color: transparent transparent transparent #2b220c;
 }
+.play .play-icon { border-width: 5px 0 5px 8px; }
+/* The play button scales with the picture (container units), so a phone-sized frame gets a phone-sized button. */
+.media-frame { container-type: inline-size; }
+@supports (width: 1cqw) {
+  .play {
+    bottom: clamp(6px, 2.6cqw, 16px); min-height: clamp(20px, 5.4cqw, 32px); padding: 0 clamp(5px, 1.7cqw, 10px);
+    font-size: clamp(8px, 1.85cqw, 11px); gap: clamp(4px, 1.3cqw, 8px); border-width: clamp(2px, .5cqw, 3px);
+    letter-spacing: clamp(.02em, .25cqw, .06em);
+  }
+  .play .play-icon { border-width: clamp(3px, .85cqw, 5px) 0 clamp(3px, .85cqw, 5px) clamp(5px, 1.35cqw, 8px); }
+}
+/* The hero slideshow: a strip of pictures moved by transform; app.js runs the timer, clicks and drags. */
+.media-frame[data-slides] { cursor: pointer; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.media-frame[data-slides].is-dragging { cursor: grabbing; }
+.slides { display: flex; width: 100%; height: 100%; will-change: transform; }
+.slides.is-animating { transition: transform .45s cubic-bezier(.22, .61, .36, 1); }
+.hero-media .slides img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .slides.is-animating { transition-duration: .01s; } }
 .hero-media img { display: block; width: 100%; height: auto; }
 .hero-media iframe { display: block; width: 100%; height: 100%; border: 0; }
 

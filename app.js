@@ -31,6 +31,103 @@
     });
   });
 
+  // Hero slideshow: a new picture every 3 s; a click on the left half goes back, on the right half forward; a drag
+  // follows the pointer and changes picture when released far enough. Holding a drag stops the timer, and every change
+  // restarts it. The strip carries a copy of the last picture before the first and of the first after the last, so it
+  // wraps around without running back through every picture.
+  const frame = document.querySelector("[data-slides]");
+  const track = frame?.querySelector("[data-track]");
+  const slides = track ? Array.from(track.children) : [];
+  if (frame && track && slides.length > 1) {
+    const n = slides.length, DELAY = 3000;
+    const head = slides[n - 1].cloneNode(true), tail = slides[0].cloneNode(true);
+    [head, tail].forEach((c) => { c.alt = ""; c.setAttribute("aria-hidden", "true"); });
+    track.prepend(head);
+    track.append(tail);
+    let pos = 1, timer = 0, stopped = false;
+    let drag = null;   // { id, x0, t0, dx, moved } while a pointer is down
+
+    const show = (el) => {
+      if (el.dataset.src && !el.getAttribute("src")) el.src = el.dataset.src;
+    };
+    const load = () => {   // this picture and its neighbours, the copies with their originals
+      [pos - 1, pos, pos + 1].forEach((p) => {
+        const i = ((p - 1) % n + n) % n;
+        show(slides[i]);
+        if (i === n - 1) show(head);
+        if (i === 0) show(tail);
+      });
+    };
+    const place = (animate, px = 0) => {
+      track.classList.toggle("is-animating", animate);
+      track.style.transform = px ? `translateX(calc(${-pos * 100}% + ${px}px))` : `translateX(${-pos * 100}%)`;
+    };
+    const settle = () => {   // off a copy onto the real picture it shows, without animation
+      if (pos === 0 || pos === n + 1) {
+        pos = pos === 0 ? n : 1;
+        place(false);
+        void track.offsetWidth;   // apply the jump before any next transition
+      }
+    };
+    const schedule = () => {
+      clearTimeout(timer);
+      if (!stopped && !drag && !document.hidden) timer = setTimeout(() => go(1), DELAY);
+    };
+    const go = (step) => {
+      settle();
+      pos += step;
+      load();
+      place(true);
+      schedule();
+    };
+
+    track.addEventListener("transitionend", (e) => { if (e.target === track) settle(); });
+    place(false);
+    load();
+    schedule();
+
+    frame.addEventListener("pointerdown", (e) => {
+      if (stopped || drag || e.button !== 0 || e.target.closest("[data-play]")) return;
+      clearTimeout(timer);   // no change while the pointer is held
+      settle();
+      place(false);
+      drag = { id: e.pointerId, x0: e.clientX, t0: performance.now(), dx: 0, moved: false };
+      frame.setPointerCapture(e.pointerId);
+    });
+    frame.addEventListener("pointermove", (e) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      drag.dx = e.clientX - drag.x0;
+      if (Math.abs(drag.dx) > 6) { drag.moved = true; frame.classList.add("is-dragging"); }
+      if (drag.moved) place(false, drag.dx);
+    });
+    const release = (e, cancelled) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      const d = drag;
+      drag = null;
+      frame.classList.remove("is-dragging");
+      if (cancelled) { place(true); schedule(); return; }
+      const w = frame.clientWidth;
+      if (d.moved) {
+        const fast = performance.now() - d.t0 < 250 && Math.abs(d.dx) > 30;
+        if (d.dx < -w * 0.15 || (fast && d.dx < 0)) go(1);
+        else if (d.dx > w * 0.15 || (fast && d.dx > 0)) go(-1);
+        else { place(true); schedule(); }
+      } else {
+        const r = frame.getBoundingClientRect();
+        go(e.clientX < r.left + r.width / 2 ? -1 : 1);
+      }
+    };
+    frame.addEventListener("pointerup", (e) => release(e, false));
+    frame.addEventListener("pointercancel", (e) => release(e, true));
+    document.addEventListener("visibilitychange", schedule);
+    frame.querySelector("[data-play]")?.addEventListener("click", () => {   // the video replaces the pictures
+      stopped = true;
+      clearTimeout(timer);
+      frame.removeAttribute("data-slides");
+      frame.classList.remove("is-dragging");
+    });
+  }
+
   const toggle = document.querySelector("[data-nav-toggle]");
   const nav = document.querySelector("[data-nav]");
   toggle?.addEventListener("click", () => {
