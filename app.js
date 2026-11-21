@@ -44,7 +44,7 @@
     [head, tail].forEach((c) => { c.alt = ""; c.setAttribute("aria-hidden", "true"); });
     track.prepend(head);
     track.append(tail);
-    let pos = 1, timer = 0, stopped = false;
+    let pos = 1 + Math.floor(Math.random() * n), timer = 0, stopped = false;   // a random first picture, then in order
     let drag = null;   // { id, x0, t0, dx, moved } while a pointer is down
 
     const show = (el) => {
